@@ -1,4 +1,4 @@
-package com.ultralesson.eventplanner.model;
+package com.eventplanner.pages;
 
 import java.util.Objects;
 

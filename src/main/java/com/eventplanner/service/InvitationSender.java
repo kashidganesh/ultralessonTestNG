@@ -1,7 +1,7 @@
-package com.ultralesson.eventplanner.service;
+package com.eventplanner.service;
 
-import com.ultralesson.eventplanner.model.Attendee;
-import com.ultralesson.eventplanner.model.Event;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Attendee;
 
 import java.util.List;
 

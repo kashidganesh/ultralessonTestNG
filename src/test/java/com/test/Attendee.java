@@ -1,28 +1,27 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Attendee;
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Venue;
+import com.eventplanner.service.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class AttendeeTest {
+public class Attendee {
 
-    Attendee attendee;
+    com.eventplanner.pages.Attendee attendee;
     EventPlanner eventPlanner;
 
     @BeforeMethod
     public void setUp() {
-        attendee = new Attendee(1, "John Doe", "john.doe@example.com");
+        attendee = new com.eventplanner.pages.Attendee(1, "John Doe", "john.doe@example.com");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Invalid email format", groups = {"validation"})
     public void shouldThrowExceptionForInvalidEmail() {
-        Attendee invalidAttendee = new Attendee(5, "Ishan Kumar", "example.com");
+        com.eventplanner.pages.Attendee invalidAttendee = new com.eventplanner.pages.Attendee(5, "Ishan Kumar", "example.com");
     }
 
     @Test(groups = {"validateAttendee"})
@@ -35,7 +34,7 @@ public class AttendeeTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class, groups = {"validation"})
     public void testAddInvalidAttendeeToEvent() {
-        Attendee invalidAttendee = new Attendee(4, "", "");
+        com.eventplanner.pages.Attendee invalidAttendee = new com.eventplanner.pages.Attendee(4, "", "");
     }
 
     @Test(expectedExceptions = Exception.class, groups = {"addAttendee"})
@@ -44,7 +43,7 @@ public class AttendeeTest {
         Venue venue = new Venue(1, "Conference Center", null, 500);
         Event fakeEvent = new Event(99, "Non-Existent Event", "This event does not exist", venue);
 
-        Attendee attendee = new Attendee(5, "Charlie Green", "charlie.green@example.com");
+        com.eventplanner.pages.Attendee attendee = new com.eventplanner.pages.Attendee(5, "Charlie Green", "charlie.green@example.com");
         fakeEvent.addAttendee(attendee);
     }
 
@@ -55,7 +54,7 @@ public class AttendeeTest {
         Event event = new Event(1, "Tech Conference", "A conference about technology", venue);
         eventPlanner.addEvent(event);
 
-        Attendee attendee = new Attendee(3, "Alice Brown", "alice.brown@example.com");
+        com.eventplanner.pages.Attendee attendee = new com.eventplanner.pages.Attendee(3, "Alice Brown", "alice.brown@example.com");
         event.addAttendee(attendee);
 
         event.removeAttendee(attendee);
@@ -66,7 +65,7 @@ public class AttendeeTest {
     public void shouldNotAllowAddingAttendeeWithNullName() {
         Venue venue = new Venue(1, "Conference Center", "New York Central", 500);
         Event event = new Event(2, "Tech Conference", "A comprehensive tech event", venue);
-        Attendee attendee = new Attendee(3, null, "nullname@example.com");
+        com.eventplanner.pages.Attendee attendee = new com.eventplanner.pages.Attendee(3, null, "nullname@example.com");
         event.addAttendee(attendee);
     }
 
@@ -74,7 +73,7 @@ public class AttendeeTest {
     public void shouldNotAllowAddingAttendeeToNonexistentEvent() {
         EventPlanner eventPlanner = new EventPlanner();
         Event nonExistentEvent = new Event(99, "Ghost Event", "This is a phantom event", new Venue(10, null, "Nowhere", 0));
-        Attendee attendee = new Attendee(4, "Alice Wonder", "alice.wonder@example.com");
+        com.eventplanner.pages.Attendee attendee = new com.eventplanner.pages.Attendee(4, "Alice Wonder", "alice.wonder@example.com");
         // This method should ideally check if the event exists in the event planner before adding an attendee.
         nonExistentEvent.addAttendee(attendee);
     }
@@ -94,7 +93,7 @@ public class AttendeeTest {
         Event event = new Event(1, "Tech Conference", "A conference about technology", venue);
         eventPlanner.addEvent(event);
 
-        Attendee newAttendee = new Attendee(3, "Alice Brown", "alice.brown@example.com");
+        com.eventplanner.pages.Attendee newAttendee = new com.eventplanner.pages.Attendee(3, "Alice Brown", "alice.brown@example.com");
         int initialSize = event.getAttendees().size();
         event.addAttendee(newAttendee);
 

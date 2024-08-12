@@ -1,10 +1,9 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Attendee;
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Schedule;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.InvitationSender;
+import com.eventplanner.pages.Attendee;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Schedule;
+import com.eventplanner.pages.Venue;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,15 +15,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvitationSenderTest {
+public class InvitationSender {
 
-    private InvitationSender invitationSender;
+    private com.eventplanner.service.InvitationSender invitationSender;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
     @BeforeMethod
     public void setUp() {
-        invitationSender = new InvitationSender();
+        invitationSender = new com.eventplanner.service.InvitationSender();
         System.setOut(new PrintStream(outContent));
     }
 

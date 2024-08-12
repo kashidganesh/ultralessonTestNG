@@ -1,20 +1,20 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Venue;
+import com.eventplanner.service.EventPlanner;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class EventManagementTest {
+public class EventManagement {
 
     private final EventPlanner eventPlanner;
     private final Event event;
     private final Venue venue;
 
     // Constructor for dependency injection
-    public EventManagementTest(EventPlanner eventPlanner, Event event, Venue venue) {
+    public EventManagement(EventPlanner eventPlanner, Event event, Venue venue) {
         this.eventPlanner = eventPlanner;
         this.event = event;
         this.venue = venue;

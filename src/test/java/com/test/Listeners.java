@@ -1,11 +1,11 @@
-package com.ultralesson.eventplanner;
+package com.test;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class CustomTestNGListener implements ITestListener {
+public class Listeners implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
         System.out.println("Starting test: " + result.getName() + " at " + getCurrentTime());

@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="EventPlannerSuite" parallel="methods" thread-count="4">
     <listeners>
-        <listener class-name="com.ultralesson.eventplanner.CustomTestNGListener" />
+        <listener class-name="com.test.Listeners" />
     </listeners>
     <test name="EventPlannerTests">
         <groups>
@@ -18,12 +18,12 @@
             </dependencies>
         </groups>
         <classes>
-            <class name="com.ultralesson.eventplanner.AttendeeTest"/>
-            <class name="com.ultralesson.eventplanner.EventCreationTest"/>
-            <class name="com.ultralesson.eventplanner.EventPlannerTest"/>
-            <class name="com.ultralesson.eventplanner.InvitationSenderTest"/>
-            <class name="com.ultralesson.eventplanner.ScheduleTest"/>
-            <class name="com.ultralesson.eventplanner.EventManagementTest"/>
+            <class name="com.test.Attendee"/>
+            <class name="com.test.EventCreation"/>
+            <class name="com.test.EventPlanner"/>
+            <class name="com.test.InvitationSender"/>
+            <class name="com.test.Schedule"/>
+            <class name="com.test.EventManagement"/>
         </classes>
     </test>
 </suite>

@@ -1,14 +1,13 @@
-package com.ultralesson.eventplanner;
+package com.eventplanner;
 
-import com.ultralesson.eventplanner.model.Attendee;
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Schedule;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
-import com.ultralesson.eventplanner.service.InvitationSender;
-import com.ultralesson.eventplanner.service.ScheduleFinder;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Schedule;
+import com.eventplanner.pages.Attendee;
+import com.eventplanner.pages.Venue;
+import com.eventplanner.service.EventPlanner;
+import com.eventplanner.service.InvitationSender;
+import com.eventplanner.service.ScheduleFinder;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

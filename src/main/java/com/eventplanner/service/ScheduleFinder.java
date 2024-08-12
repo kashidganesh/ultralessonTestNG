@@ -1,9 +1,9 @@
-package com.ultralesson.eventplanner.service;
+package com.eventplanner.service;
 
-import com.ultralesson.eventplanner.model.Attendee;
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Schedule;
-import com.ultralesson.eventplanner.model.Venue;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Schedule;
+import com.eventplanner.pages.Attendee;
+import com.eventplanner.pages.Venue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

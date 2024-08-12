@@ -1,15 +1,15 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Venue;
+import com.eventplanner.service.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
-public class EventCreationTest {
+public class EventCreation {
 
     private EventPlanner eventPlanner;
 
@@ -57,7 +57,7 @@ public class EventCreationTest {
         Event event = new Event(1, "Tech Conference", "A conference about technology", venue);
 
         return new Object[]{
-                new EventManagementTest(eventPlanner, event, venue)
+                new EventManagement(eventPlanner, event, venue)
         };
     }
 
@@ -75,7 +75,7 @@ public class EventCreationTest {
     @Factory(dataProvider = "eventDataProvider1")
     public Object[] createInstances(EventPlanner eventPlanner, Event event, Venue venue) {
         return new Object[]{
-                new EventManagementTest(eventPlanner, event, venue)
+                new EventManagement(eventPlanner, event, venue)
         };
     }
 }

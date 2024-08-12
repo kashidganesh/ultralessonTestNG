@@ -1,8 +1,7 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Venue;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -12,14 +11,14 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class EventPlannerTest {
+public class EventPlanner {
 
-    private EventPlanner eventPlanner;
+    private com.eventplanner.service.EventPlanner eventPlanner;
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"eventPlanner"}) // Inject the EventPlanner dependency
-    public void setUp(@Optional EventPlanner eventPlanner) {
-        this.eventPlanner = eventPlanner != null ? eventPlanner : new EventPlanner();
+    public void setUp(@Optional com.eventplanner.service.EventPlanner eventPlanner) {
+        this.eventPlanner = eventPlanner != null ? eventPlanner : new com.eventplanner.service.EventPlanner();
     }
 
     @Test(dependsOnGroups = "eventCreation")
@@ -79,7 +78,7 @@ public class EventPlannerTest {
     @Test(groups = {"venueManagement"},expectedExceptions = IllegalArgumentException.class)
     public void testAssignVenueToEvent() {
         // Arrange
-        EventPlanner eventPlanner = new EventPlanner();
+        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
         Venue venue = new Venue(1, "Test Venue", "Test Address", 100);
         Event event = new Event(1, "Test Event", "Event Description", null); // Initially, no venue assigned
 
@@ -95,7 +94,7 @@ public class EventPlannerTest {
     @Test(groups = {"venueManagement"})
     public void testAddUpdateRemoveVenue() {
         // Arrange
-        EventPlanner eventPlanner = new EventPlanner();
+        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
         Venue venue = new Venue(2, "Another Venue", "Another Address", 200);
 
         // Act: Add the venue
@@ -124,7 +123,7 @@ public class EventPlannerTest {
 
     @Test(groups = {"venueManagement"}, expectedExceptions = IllegalArgumentException.class)
     public void testAssignNonExistentVenueToEvent() {
-        EventPlanner eventPlanner = new EventPlanner();
+        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
         Venue nonExistentVenue = new Venue(3, "Phantom Venue", "Nowhere", 0);
         Event event = new Event(1, "Test Event", "Event Description", null);
 

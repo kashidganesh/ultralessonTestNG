@@ -1,9 +1,8 @@
-package com.ultralesson.eventplanner;
+package com.test;
 
-import com.ultralesson.eventplanner.model.Event;
-import com.ultralesson.eventplanner.model.Schedule;
-import com.ultralesson.eventplanner.model.Venue;
-import com.ultralesson.eventplanner.service.EventPlanner;
+import com.eventplanner.pages.Event;
+import com.eventplanner.pages.Venue;
+import com.eventplanner.service.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +12,7 @@ import java.time.LocalDateTime;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class ScheduleTest {
+public class Schedule {
 
     private EventPlanner eventPlanner;
 
@@ -39,7 +38,7 @@ public class ScheduleTest {
         LocalDateTime endTime = startTime.plusHours(2);
 
         eventPlanner.scheduleEvent(event, venue, startTime, endTime);
-        Schedule createdSchedule = eventPlanner.getSchedules().get(0);
+        com.eventplanner.pages.Schedule createdSchedule = eventPlanner.getSchedules().get(0);
 
         assertNotNull(createdSchedule, "The schedule should be created.");
         assertEquals(createdSchedule.getStartTime(), startTime, "The schedule should have the correct start time.");
@@ -99,7 +98,7 @@ public class ScheduleTest {
 
         // When
         eventPlanner.scheduleEvent(event, venue, startTime, endTime);
-        Schedule scheduled = eventPlanner.getSchedules().get(0);
+        com.eventplanner.pages.Schedule scheduled = eventPlanner.getSchedules().get(0);
 
         // Then
         Assert.assertNotNull(scheduled, "Schedule should not be null");

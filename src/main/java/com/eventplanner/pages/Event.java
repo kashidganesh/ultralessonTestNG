@@ -1,8 +1,7 @@
-package com.ultralesson.eventplanner.model;
+package com.eventplanner.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Event {
     private int id;
