@@ -2,7 +2,7 @@ package com.test;
 
 import com.eventplanner.pages.Event;
 import com.eventplanner.pages.Venue;
-import com.eventplanner.service.EventPlanner;
+import com.eventplanner.events.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;

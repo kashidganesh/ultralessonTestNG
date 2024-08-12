@@ -2,7 +2,7 @@ package com.test;
 
 import com.eventplanner.pages.Event;
 import com.eventplanner.pages.Venue;
-import com.eventplanner.service.EventPlanner;
+import com.eventplanner.events.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -77,6 +77,13 @@ public class Attendee {
         // This method should ideally check if the event exists in the event planner before adding an attendee.
         nonExistentEvent.addAttendee(attendee);
     }
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testCreateEventWithoutName() {
+        Venue venue = new Venue(1, "Conference Center", "New York Central", 500);
+        Event event = new Event(0, "", "A conference about technology", venue);
+        eventPlanner.createEvent(event);
+    }
+
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void createTestEvent() {

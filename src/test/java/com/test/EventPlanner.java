@@ -7,18 +7,19 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import java.time.LocalDateTime;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 public class EventPlanner {
 
-    private com.eventplanner.service.EventPlanner eventPlanner;
+    private com.eventplanner.events.EventPlanner eventPlanner;
 
     @BeforeMethod(alwaysRun = true)
     @Parameters({"eventPlanner"}) // Inject the EventPlanner dependency
-    public void setUp(@Optional com.eventplanner.service.EventPlanner eventPlanner) {
-        this.eventPlanner = eventPlanner != null ? eventPlanner : new com.eventplanner.service.EventPlanner();
+    public void setUp(@Optional com.eventplanner.events.EventPlanner eventPlanner) {
+        this.eventPlanner = eventPlanner != null ? eventPlanner : new com.eventplanner.events.EventPlanner();
     }
 
     @Test(dependsOnGroups = "eventCreation")
@@ -78,7 +79,7 @@ public class EventPlanner {
     @Test(groups = {"venueManagement"},expectedExceptions = IllegalArgumentException.class)
     public void testAssignVenueToEvent() {
         // Arrange
-        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
+        com.eventplanner.events.EventPlanner eventPlanner = new com.eventplanner.events.EventPlanner();
         Venue venue = new Venue(1, "Test Venue", "Test Address", 100);
         Event event = new Event(1, "Test Event", "Event Description", null); // Initially, no venue assigned
 
@@ -94,7 +95,7 @@ public class EventPlanner {
     @Test(groups = {"venueManagement"})
     public void testAddUpdateRemoveVenue() {
         // Arrange
-        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
+        com.eventplanner.events.EventPlanner eventPlanner = new com.eventplanner.events.EventPlanner();
         Venue venue = new Venue(2, "Another Venue", "Another Address", 200);
 
         // Act: Add the venue
@@ -121,9 +122,20 @@ public class EventPlanner {
         Assert.assertFalse(eventPlanner.getVenues().contains(updatedVenue), "Venue should be removed from the list");
     }
 
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testScheduleEventWithPastEndDate() {
+        Venue venue = new Venue(1, "Conference Center", "New York Central", 500);
+        Event event = new Event(1, "Tech Conference", "A conference about technology", venue);
+        LocalDateTime startTime = LocalDateTime.now().plusDays(1);
+        LocalDateTime endTime = LocalDateTime.now().minusDays(1); // Past end date
+        eventPlanner.scheduleEvent(event, venue, startTime, endTime);
+    }
+
+
+
     @Test(groups = {"venueManagement"}, expectedExceptions = IllegalArgumentException.class)
     public void testAssignNonExistentVenueToEvent() {
-        com.eventplanner.service.EventPlanner eventPlanner = new com.eventplanner.service.EventPlanner();
+        com.eventplanner.events.EventPlanner eventPlanner = new com.eventplanner.events.EventPlanner();
         Venue nonExistentVenue = new Venue(3, "Phantom Venue", "Nowhere", 0);
         Event event = new Event(1, "Test Event", "Event Description", null);
 

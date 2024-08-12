@@ -1,4 +1,4 @@
-package com.eventplanner.service;
+package com.eventplanner.events;
 
 import com.eventplanner.pages.Event;
 import com.eventplanner.pages.Schedule;

@@ -17,13 +17,13 @@ import java.util.List;
 
 public class InvitationSender {
 
-    private com.eventplanner.service.InvitationSender invitationSender;
+    private com.eventplanner.events.InvitationSender invitationSender;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
     @BeforeMethod
     public void setUp() {
-        invitationSender = new com.eventplanner.service.InvitationSender();
+        invitationSender = new com.eventplanner.events.InvitationSender();
         System.setOut(new PrintStream(outContent));
     }
 
