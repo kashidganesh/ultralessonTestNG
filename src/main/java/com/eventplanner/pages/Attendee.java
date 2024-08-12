@@ -68,7 +68,7 @@ public class Attendee {
     }
 
     public boolean isValidEmail(String email) {
-        String regex = "^(.+)@(.+)$";
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();

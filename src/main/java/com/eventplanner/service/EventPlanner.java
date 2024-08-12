@@ -37,11 +37,11 @@ public class EventPlanner {
 
     public void scheduleEvent(Event event, Venue venue, LocalDateTime startTime, LocalDateTime endTime) {
         if (checkDateIsPast(startTime))
-            throw new IllegalArgumentException("Start date cannot be past dated");
+            throw new IllegalArgumentException("Start date cannot be past dated ");
         if (checkDateIsPast(endTime))
-            throw new IllegalArgumentException("End date cannot be past dated");
+            throw new IllegalArgumentException("End date cannot be past dated ");
         if(checkIsOverlapping(startTime,endTime))
-            throw new IllegalArgumentException("Schedule time cannot be overlapped");
+            throw new IllegalArgumentException("Schedule time cannot be overlapped ");
 
         int scheduleId = schedules.size() + 1;
         Schedule schedule = new Schedule(scheduleId, event, venue, startTime, endTime);
