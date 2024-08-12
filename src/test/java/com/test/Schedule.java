@@ -57,7 +57,11 @@ public class Schedule {
         LocalDateTime startTime = LocalDateTime.now().minusDays(1); // Past date
         LocalDateTime endTime = startTime.plusHours(2);
 
-        eventPlanner.scheduleEvent(event, venue, startTime, endTime);
+        Exception exception = Assert.expectThrows(IllegalArgumentException.class, () -> {
+            eventPlanner.scheduleEvent(event, venue, startTime, endTime);
+        });
+        Assert.assertTrue(exception.getMessage().contains("Start date cannot be past dated"), "Exception message should indicate the issue with the past start date");
+
     }
 
     @Test(dependsOnMethods = "createTestEvent", expectedExceptions = IllegalArgumentException.class)
