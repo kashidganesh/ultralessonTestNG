@@ -6,6 +6,7 @@ import com.eventplanner.service.EventPlanner;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDateTime;
 
@@ -39,15 +40,16 @@ public class Schedule {
 
         eventPlanner.scheduleEvent(event, venue, startTime, endTime);
         com.eventplanner.pages.Schedule createdSchedule = eventPlanner.getSchedules().get(0);
-
+        SoftAssert softAssert = new SoftAssert();
         assertNotNull(createdSchedule, "The schedule should be created.");
-        assertEquals(createdSchedule.getStartTime(), startTime, "The schedule should have the correct start time.");
-        assertEquals(createdSchedule.getEvent(), event, "Scheduled event should match the input event");
-        assertEquals(createdSchedule.getVenue(), venue, "Scheduled venue should match the input venue");
-        assertEquals(createdSchedule.getStartTime(), startTime, "Start time should match the input start time");
-        assertEquals(createdSchedule.getEndTime(), endTime, "End time should match the input end time");
-        assertEquals(createdSchedule.getStartTime().toLocalDate(), startTime.toLocalDate(), "Start date should match the input start date");
-        assertEquals(createdSchedule.getEndTime().toLocalDate(), endTime.toLocalDate(), "End date should match the input end date");
+        softAssert.assertEquals(createdSchedule.getStartTime(), startTime, "The schedule should have the correct start time.");
+        softAssert.assertEquals(createdSchedule.getEvent(), event, "Scheduled event should match the input event");
+        softAssert.assertEquals(createdSchedule.getVenue(), venue, "Scheduled venue should match the input venue");
+        softAssert.assertEquals(createdSchedule.getStartTime(), startTime, "Start time should match the input start time");
+        softAssert.assertEquals(createdSchedule.getEndTime(), endTime, "End time should match the input end time");
+        softAssert.assertEquals(createdSchedule.getStartTime().toLocalDate(), startTime.toLocalDate(), "Start date should match the input start date");
+        softAssert.assertEquals(createdSchedule.getEndTime().toLocalDate(), endTime.toLocalDate(), "End date should match the input end date");
+        softAssert.assertAll();
     }
 
     @Test(dependsOnMethods = "createTestEvent", expectedExceptions = IllegalArgumentException.class, expectedExceptionsMessageRegExp = "Start date cannot be past dated")
