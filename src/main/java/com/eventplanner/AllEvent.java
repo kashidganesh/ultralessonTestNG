@@ -14,8 +14,8 @@ import java.util.List;
 public class AllEvent {
     public static void main(String[] args) {
 
-        Venue venue1 = new Venue(1, "Conference Center", "Newyork Central", 500);
-        Venue venue2 = new Venue(2, "Hotel Ballroom", "Washington DC", 200);
+        Venue venue1 = new Venue(1, "Taj", "Mumbai", 420);
+        Venue venue2 = new Venue(2, "Indian", "Delhi", 250);
 
         Event event1 = new Event(1, "Tech Conference", "A conference about technology", venue1);
         Event event2 = new Event(2, "Wedding Reception", "A lovely wedding reception", venue2);
