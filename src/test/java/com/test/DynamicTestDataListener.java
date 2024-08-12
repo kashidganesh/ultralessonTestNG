@@ -16,7 +16,7 @@ public class DynamicTestDataListener implements IInvokedMethodListener {
 
                 // Example of injecting the first dataset into the test method as a parameter
                 if (dataSets.length > 0) {
-                    testResult.getTestContext().setAttribute("data", dataSets[0]);
+                    testResult.getTestContext().setAttribute("data", dataSets);
                 }
             }
         }
