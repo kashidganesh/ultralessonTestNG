@@ -2,6 +2,7 @@
 <suite name="EventPlannerSuite" parallel="methods" thread-count="4">
     <listeners>
         <listener class-name="com.test.Listeners" />
+        <listener class-name="com.test.DynamicTestDataListener" />
     </listeners>
     <test name="EventPlannerTests">
         <groups>
