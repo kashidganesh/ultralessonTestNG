@@ -150,4 +150,6 @@ public class EventPlanner {
         assertNotNull(updatedEvent, "Event should not be null");
         assertEquals(updatedEvent.getVenue(), nonExistentVenue, "The venue should be assigned to the event correctly");
     }
+
+
 }
